@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<AnchorPane id="DirectoryScan" fx:id="anchorPane" prefHeight="600.0" prefWidth="670.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.UtilsView.DirectoryScan.DirectoryScanController">
+   <children>
+      <Label layoutX="176.0" layoutY="14.0" text="DirectoryScan">
+         <font>
+            <Font name="Jokerman" size="45.0" />
+         </font>
+      </Label>
+      <JFXButton buttonType="RAISED" layoutX="13.0" layoutY="535.0" prefHeight="23.0" prefWidth="644.0" text="TEST" />
+      <JFXButton buttonType="RAISED" layoutX="14.0" layoutY="308.0" prefHeight="23.0" prefWidth="644.0" text="TEST" />
+      <JFXButton buttonType="RAISED" layoutX="14.0" layoutY="433.0" prefHeight="23.0" prefWidth="644.0" text="TEST" />
+      <JFXButton buttonType="RAISED" layoutX="13.0" layoutY="208.0" prefHeight="23.0" prefWidth="644.0" text="TEST" />
+   </children>
+</AnchorPane>

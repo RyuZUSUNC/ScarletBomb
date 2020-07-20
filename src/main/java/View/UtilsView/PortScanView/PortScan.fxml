@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<AnchorPane id="PortScan" fx:id="anchorPane" prefHeight="600.0" prefWidth="670.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.UtilsView.PortScanView.PortScanController">
+   <children>
+      <JFXButton fx:id="startBT" layoutX="154.0" layoutY="495.0" onAction="#Startscan" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #ffffff; -jfx-button-type: RAISED;" text="%Start" />
+      <JFXTextField fx:id="target" alignment="CENTER" layoutX="86.0" layoutY="123.0" prefHeight="30.0" prefWidth="236.0" promptText="%Target" unFocusColor="#4d4d4d">
+         <font>
+            <Font size="14.0" />
+         </font></JFXTextField>
+      <VBox layoutX="209.0" layoutY="176.0" prefHeight="300.0" prefWidth="110.0" spacing="30.0">
+         <children>
+            <JFXTextField fx:id="start_port" alignment="CENTER" prefHeight="30.0" prefWidth="200.0" text="1" />
+            <JFXTextField fx:id="end_port" alignment="CENTER" prefHeight="30.0" prefWidth="200.0" text="65535" />
+            <JFXTextField fx:id="thred_count" alignment="CENTER" prefHeight="30.0" prefWidth="200.0" text="1000" />
+            <JFXTextField fx:id="delay" alignment="CENTER" prefHeight="30.0" prefWidth="200.0" text="200" />
+            <JFXTextField fx:id="state" alignment="CENTER" editable="false" prefHeight="30.0" prefWidth="200.0" text="Wait" />
+         </children>
+      </VBox>
+      <VBox layoutX="66.0" layoutY="176.0" prefHeight="300.0" prefWidth="110.0" spacing="30.0">
+         <children>
+            <Label alignment="CENTER" prefHeight="30.0" prefWidth="110.0" text="%Start_Port">
+               <font>
+                  <Font size="14.0" />
+               </font></Label>
+            <Label alignment="CENTER" prefHeight="30.0" prefWidth="110.0" text="%End_Port">
+               <font>
+                  <Font size="14.0" />
+               </font></Label>
+            <Label alignment="CENTER" prefHeight="30.0" prefWidth="110.0" text="%Thread_Count">
+               <font>
+                  <Font size="14.0" />
+               </font></Label>
+            <Label alignment="CENTER" prefHeight="30.0" prefWidth="110.0" text="%Delay">
+               <font>
+                  <Font size="14.0" />
+               </font></Label>
+            <Label alignment="CENTER" prefHeight="30.0" prefWidth="110.0" text="%State">
+               <font>
+                  <Font size="14.0" />
+               </font></Label>
+         </children>
+      </VBox>
+      <Label layoutX="226.0" layoutY="14.0" prefHeight="80.0" prefWidth="219.0" text="Port Scan" AnchorPane.topAnchor="5.0">
+         <font>
+            <Font name="Jokerman" size="45.0" />
+         </font>
+      </Label>
+      <VBox layoutX="378.0" layoutY="113.0" spacing="6.0">
+         <children>
+            <JFXButton fx:id="littleBT01" contentDisplay="CENTER" layoutX="378.0" layoutY="113.0" onAction="#PortOrder" prefHeight="50.0" prefWidth="31.0" ripplerFill="BLACK" style="-fx-background-color: #ffffff;" />
+            <JFXButton fx:id="littleBT02" contentDisplay="CENTER" layoutX="378.0" layoutY="176.0" onAction="#PortFast" prefHeight="50.0" prefWidth="31.0" ripplerFill="BLACK" style="-fx-background-color: #ffffff;">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </JFXButton>
+            <JFXButton fx:id="littleBT03" contentDisplay="CENTER" layoutX="378.0" layoutY="239.0" onAction="#PortCopy" prefHeight="50.0" prefWidth="31.0" ripplerFill="BLACK" style="-fx-background-color: #ffffff;">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </JFXButton>
+         </children>
+      </VBox>
+      <JFXSpinner fx:id="spinner" layoutX="238.0" layoutY="406.0" visible="false" />
+      <JFXListView fx:id="ResultListView" layoutX="406.0" layoutY="105.0" prefHeight="460.0" prefWidth="200.0" />
+   </children>
+</AnchorPane>

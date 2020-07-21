@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.*?>
+<?import javafx.scene.effect.*?>
+<?import com.jfoenix.svg.*?>
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
 <?import com.jfoenix.controls.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
+
 <AnchorPane id="PortScan" fx:id="anchorPane" prefHeight="600.0" prefWidth="670.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.UtilsView.PortScanView.PortScanController">
    <children>
       <JFXButton fx:id="startBT" layoutX="154.0" layoutY="495.0" onAction="#Startscan" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #ffffff; -jfx-button-type: RAISED;" text="%Start" />
@@ -67,5 +73,27 @@
       </VBox>
       <JFXSpinner fx:id="spinner" layoutX="238.0" layoutY="406.0" visible="false" />
       <JFXListView fx:id="ResultListView" layoutX="406.0" layoutY="105.0" prefHeight="460.0" prefWidth="200.0" />
+      <AnchorPane fx:id="copyalert" layoutX="156.0" layoutY="200.0" prefHeight="200.0" prefWidth="360.0" style="-fx-background-color: #eeeeee;" visible="false">
+         <children>
+            <SVGGlyph layoutX="240.0" layoutY="10.0" prefHeight="125.0" prefWidth="110.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
+            <JFXButton buttonType="RAISED" layoutX="261.0" layoutY="149.0" prefHeight="30.0" prefWidth="60.0" style="-fx-background-color: #ffffff;" text="OK" />
+            <JFXTextArea editable="false" layoutX="10.0" layoutY="58.0" prefHeight="125.0" prefWidth="221.0" text="Port information is copied to the clipboard." AnchorPane.bottomAnchor="17.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="129.0" AnchorPane.topAnchor="58.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </JFXTextArea>
+            <JFXTextArea editable="false" focusColor="#5c80ee" layoutX="10.0" layoutY="10.0" prefHeight="40.0" prefWidth="221.0" text="INFO" unFocusColor="#494a52">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </JFXTextArea>
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor>
+      </AnchorPane>
    </children>
 </AnchorPane>

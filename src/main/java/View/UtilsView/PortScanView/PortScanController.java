@@ -1,5 +1,6 @@
 package View.UtilsView.PortScanView;
 
+import Init.Init;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXListView;
 import com.jfoenix.controls.JFXSpinner;
@@ -10,6 +11,7 @@ import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.stage.Stage;
 
 import java.awt.*;
 import java.awt.datatransfer.Clipboard;
@@ -26,8 +28,6 @@ import java.util.concurrent.Executors;
 public class PortScanController {
     private final PortScanBean bean = new PortScanBean();
     private static int PORT_CONTER = 0;
-
-    // @FXML private AnchorPane anchorPane;
 
     @FXML private JFXTextField target;
     @FXML private JFXTextField start_port;
@@ -85,7 +85,7 @@ public class PortScanController {
     }
 
     @FXML private void PortFast(){
-        //// TODO: 2020/7/20
+        new PortFast().start(new Stage());
     }
 
     @FXML private void PortCopy(){
@@ -100,10 +100,9 @@ public class PortScanController {
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setGraphic(icon.clipbord_alert);
-        alert.setTitle("Infomation");
-        alert.setHeaderText("Copy Complete");
-        alert.setContentText("Port information is copied to the clipboard");
-
+        alert.setTitle(Init.languageResourceBundle.getString("Infomation"));
+        alert.setHeaderText(Init.languageResourceBundle.getString("Copy_Complete"));
+        alert.setContentText(Init.languageResourceBundle.getString("Copy_Complete_message"));
         alert.showAndWait();
     }
 

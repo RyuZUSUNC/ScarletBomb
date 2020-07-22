@@ -11,14 +11,14 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane id="PortScan" fx:id="anchorPane" prefHeight="600.0" prefWidth="670.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.UtilsView.PortScanView.PortScanController">
+<AnchorPane id="PortScan" fx:id="anchorPane" prefHeight="610.0" prefWidth="680.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.UtilsView.PortScanView.PortScanController">
    <children>
-      <JFXButton fx:id="startBT" layoutX="154.0" layoutY="495.0" onAction="#Startscan" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #ffffff; -jfx-button-type: RAISED;" text="%Start" />
-      <JFXTextField fx:id="target" alignment="CENTER" layoutX="86.0" layoutY="123.0" prefHeight="30.0" prefWidth="236.0" promptText="%Target" unFocusColor="#4d4d4d">
+      <JFXButton fx:id="startBT" layoutX="163.0" layoutY="501.0" onAction="#Startscan" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #ffffff; -jfx-button-type: RAISED;" text="%Start" />
+      <JFXTextField fx:id="target" alignment="CENTER" layoutX="91.0" layoutY="129.0" prefHeight="30.0" prefWidth="236.0" promptText="%Target" unFocusColor="#4d4d4d">
          <font>
             <Font size="14.0" />
          </font></JFXTextField>
-      <VBox layoutX="209.0" layoutY="176.0" prefHeight="300.0" prefWidth="110.0" spacing="30.0">
+      <VBox layoutX="218.0" layoutY="182.0" prefHeight="300.0" prefWidth="110.0" spacing="30.0">
          <children>
             <JFXTextField fx:id="start_port" alignment="CENTER" prefHeight="30.0" prefWidth="200.0" text="1" />
             <JFXTextField fx:id="end_port" alignment="CENTER" prefHeight="30.0" prefWidth="200.0" text="65535" />
@@ -27,7 +27,8 @@
             <JFXTextField fx:id="state" alignment="CENTER" editable="false" prefHeight="30.0" prefWidth="200.0" text="Wait" />
          </children>
       </VBox>
-      <VBox layoutX="66.0" layoutY="176.0" prefHeight="300.0" prefWidth="110.0" spacing="30.0">
+      <JFXSpinner fx:id="spinner" layoutX="247.0" layoutY="412.0" visible="false" />
+      <VBox layoutX="75.0" layoutY="182.0" prefHeight="300.0" prefWidth="110.0" spacing="30.0">
          <children>
             <Label alignment="CENTER" prefHeight="30.0" prefWidth="110.0" text="%Start_Port">
                <font>
@@ -51,12 +52,12 @@
                </font></Label>
          </children>
       </VBox>
-      <Label layoutX="226.0" layoutY="14.0" prefHeight="80.0" prefWidth="219.0" text="Port Scan" AnchorPane.topAnchor="5.0">
+      <Label layoutX="231.0" prefHeight="80.0" prefWidth="219.0" text="Port Scan" AnchorPane.topAnchor="10.0">
          <font>
             <Font name="Jokerman" size="45.0" />
          </font>
       </Label>
-      <VBox layoutX="378.0" layoutY="113.0" spacing="6.0">
+      <VBox layoutX="385.0" layoutY="121.0" spacing="6.0">
          <children>
             <JFXButton fx:id="littleBT01" contentDisplay="CENTER" layoutX="378.0" layoutY="113.0" onAction="#PortOrder" prefHeight="50.0" prefWidth="31.0" ripplerFill="BLACK" style="-fx-background-color: #ffffff;" />
             <JFXButton fx:id="littleBT02" contentDisplay="CENTER" layoutX="378.0" layoutY="176.0" onAction="#PortFast" prefHeight="50.0" prefWidth="31.0" ripplerFill="BLACK" style="-fx-background-color: #ffffff;">
@@ -71,8 +72,7 @@
             </JFXButton>
          </children>
       </VBox>
-      <JFXSpinner fx:id="spinner" layoutX="238.0" layoutY="406.0" visible="false" />
-      <JFXListView fx:id="ResultListView" layoutX="406.0" layoutY="105.0" prefHeight="460.0" prefWidth="200.0" />
+      <JFXListView fx:id="ResultListView" layoutX="413.0" layoutY="113.0" prefHeight="460.0" prefWidth="200.0" />
       <AnchorPane fx:id="copyalert" layoutX="156.0" layoutY="200.0" prefHeight="200.0" prefWidth="360.0" style="-fx-background-color: #eeeeee;" visible="false">
          <children>
             <SVGGlyph layoutX="240.0" layoutY="10.0" prefHeight="125.0" prefWidth="110.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />

@@ -1,6 +1,7 @@
 package View.UtilsView.PortScanView;
 import javafx.application.Application;
 
+import javafx.geometry.Insets;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -331,6 +332,7 @@ public class PortFast extends Application {
         primaryStage.setTitle("PortFast");
         primaryStage.setWidth(670);
         primaryStage.setHeight(800);
+        primaryStage.setResizable(false);
         primaryStage.getIcons().add(new Image(PortFast.class.getResourceAsStream("/img/icon/book-2-line.png")));
         VBox root = new VBox();
         Scene scene = new Scene(new Group());
@@ -338,6 +340,10 @@ public class PortFast extends Application {
         final WebEngine webEngine = browser.getEngine();
 
         browser.setPrefHeight(800);
+        browser.setPrefWidth(670);
+        browser.setMaxHeight(800);
+        browser.setMaxWidth(670);
+
         webEngine.loadContent(a);
 
         root.getChildren().addAll(browser);

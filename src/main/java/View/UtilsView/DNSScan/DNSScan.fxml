@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
-<AnchorPane id="DNSScan" prefHeight="600.0" prefWidth="670.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.UtilsView.DNSScan.DNSScanController">
+
+<AnchorPane id="DNSScan" prefHeight="610.0" prefWidth="680.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.UtilsView.DNSScan.DNSScanController">
    <children>
-      <Label layoutX="235.0" layoutY="14.0" text="DNSScan">
+      <Label layoutX="235.0" layoutY="14.0" text="DNSScan" AnchorPane.topAnchor="10.0">
          <font>
             <Font name="Jokerman" size="45.0" />
          </font>

@@ -1,6 +1,7 @@
 package View.RootView;
 
 import Init.Init;
+import com.sun.scenario.effect.impl.prism.PrImage;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
@@ -8,13 +9,17 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.control.TreeView;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.util.Duration;
 
+import javax.swing.text.Element;
+import javax.swing.text.html.ImageView;
+import java.io.IOException;
 import java.util.Locale;
 
-public class RootViewController{
+public class RootViewController {
     public Node SelectNode = new AnchorPane();
 
     @FXML
@@ -30,14 +35,21 @@ public class RootViewController{
 
     @FXML
     private void initialize() {
-
-
         RootTree.setRoot(RootViewNodeSet.NodeSet());
         addView();
     }
 
     public void addView() {
         Thread addview = new Thread(() -> {
+            try {
+                FXMLLoader indexloader = new FXMLLoader();//FXML布局加载器
+                indexloader.setLocation(RootViewController.class.getResource("IndexAnchorpane.fxml"));//根据路径加载布局
+                AnchorPane ap = indexloader.load();
+                allpane.getChildren().addAll(ap);//添加至主pane
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
             for (String NodePath : NodeList.NodeList) {
                 // System.out.println(NodePATH);//输出测试
                 try {

@@ -1,7 +1,6 @@
 package View.UtilsView.PortScanView;
 import javafx.application.Application;
 
-import javafx.geometry.Insets;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -340,9 +339,6 @@ public class PortFast extends Application {
         final WebEngine webEngine = browser.getEngine();
 
         browser.setPrefHeight(800);
-        browser.setPrefWidth(670);
-        browser.setMaxHeight(800);
-        browser.setMaxWidth(670);
 
         webEngine.loadContent(a);
 

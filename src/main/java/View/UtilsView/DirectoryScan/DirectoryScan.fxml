@@ -1,21 +1,132 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.*?>
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXListView?>
+<?import com.jfoenix.controls.JFXProgressBar?>
+<?import com.jfoenix.controls.JFXSpinner?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="DirectoryScan" fx:id="anchorPane" prefHeight="610.0" prefWidth="680.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.UtilsView.DirectoryScan.DirectoryScanController">
+<AnchorPane id="DirectoryScan" prefHeight="610.0" prefWidth="680.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.UtilsView.DirectoryScan.DirectoryScanController">
    <children>
       <Label layoutX="176.0" layoutY="14.0" text="DirectoryScan" AnchorPane.topAnchor="10.0">
          <font>
             <Font name="Jokerman" size="45.0" />
          </font>
       </Label>
-      <JFXButton buttonType="RAISED" layoutX="13.0" layoutY="535.0" prefHeight="23.0" prefWidth="644.0" text="TEST" AnchorPane.rightAnchor="13.0" />
-      <JFXButton buttonType="RAISED" layoutX="14.0" layoutY="308.0" prefHeight="23.0" prefWidth="644.0" text="TEST" AnchorPane.rightAnchor="13.0" />
-      <JFXButton buttonType="RAISED" layoutX="14.0" layoutY="433.0" prefHeight="23.0" prefWidth="644.0" text="TEST" AnchorPane.rightAnchor="13.0" />
-      <JFXButton buttonType="RAISED" layoutX="13.0" layoutY="208.0" prefHeight="23.0" prefWidth="644.0" text="TEST" AnchorPane.bottomAnchor="379.0" AnchorPane.leftAnchor="13.0" AnchorPane.rightAnchor="13.0" AnchorPane.topAnchor="208.0" />
+      <AnchorPane fx:id="settingPane" layoutX="176.0" layoutY="205.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="85.0">
+         <children>
+            <VBox layoutX="88.0" layoutY="31.0" prefHeight="120.0" prefWidth="490.0" spacing="20.0" AnchorPane.leftAnchor="88.0">
+               <children>
+                  <HBox prefHeight="25.0" prefWidth="465.0" spacing="5.0">
+                     <children>
+                        <JFXComboBox fx:id="CB_Protocol" prefHeight="23.0" prefWidth="90.0" />
+                        <JFXTextField fx:id="field_target" alignment="CENTER" prefHeight="23.0" prefWidth="395.0" promptText="%Target" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="25.0" prefWidth="370.0" spacing="5.0">
+                     <children>
+                        <JFXButton fx:id="BT_selectDic" buttonType="RAISED" onAction="#OnDirectory_select" prefHeight="23.0" prefWidth="90.0" style="-fx-background-color: #ffffff;" text="%Dictionary" />
+                        <JFXTextField fx:id="field_dicPath" alignment="CENTER" editable="false" prefHeight="23.0" prefWidth="395.0" promptText="%Dictionary_Path" />
+                     </children>
+                  </HBox>
+                  <JFXTextField fx:id="field_preview" alignment="CENTER" editable="false" prefHeight="23.0" prefWidth="490.0" promptText="%Preview" />
+               </children>
+            </VBox>
+            <AnchorPane layoutX="416.0" layoutY="172.0" prefHeight="250.0" prefWidth="157.0">
+               <children>
+                  <Label prefHeight="24.0" prefWidth="142.0" text="%Ststus_Code">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <VBox layoutX="18.0" layoutY="47.0" prefHeight="183.0" prefWidth="61.0" spacing="8.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="18.0" AnchorPane.topAnchor="47.0">
+                     <children>
+                        <JFXCheckBox fx:id="check_200_box" checkedColor="#1884cd" selected="true" text="200" />
+                        <JFXCheckBox fx:id="check_301_box" checkedColor="#1884cd" selected="true" text="301" />
+                        <JFXCheckBox fx:id="check_302_box" checkedColor="#1884cd" selected="true" text="302" />
+                        <JFXCheckBox fx:id="check_303_box" checkedColor="#1884cd" selected="true" text="303" />
+                        <JFXCheckBox fx:id="check_401_box" checkedColor="#1884cd" selected="true" text="401" />
+                        <JFXCheckBox fx:id="check_403_box" checkedColor="#1884cd" selected="true" text="403" />
+                        <JFXCheckBox fx:id="check_404_box" checkedColor="#1884cd" text="404" />
+                     </children>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </VBox>
+                  <VBox layoutX="79.0" layoutY="47.0" prefHeight="174.0" prefWidth="61.0" spacing="8.0">
+                     <children>
+                        <JFXCheckBox fx:id="check_1XX_box" checkedColor="#1884cd" text="1XX" />
+                        <JFXCheckBox fx:id="check_2XX_box" checkedColor="#1884cd" text="2XX" />
+                        <JFXCheckBox fx:id="check_3XX_box" checkedColor="#1884cd" text="3XX" />
+                        <JFXCheckBox fx:id="check_4XX_box" checkedColor="#1884cd" text="4XX" />
+                        <JFXCheckBox fx:id="check_5XX_box" checkedColor="#1884cd" text="5XX" />
+                        <JFXCheckBox fx:id="check_ALL_box" checkedColor="#1884cd" disable="true" text="ALL" />
+                     </children>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </VBox>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="108.0" layoutY="172.0" prefHeight="271.0" prefWidth="272.0">
+               <children>
+                  <VBox alignment="CENTER_LEFT" layoutX="14.0" layoutY="36.0" prefHeight="190.0" prefWidth="110.0" spacing="20.0" AnchorPane.bottomAnchor="22.0" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="36.0">
+                     <children>
+                        <Label prefHeight="23.0" prefWidth="110.0" text="%Thread_Count" />
+                        <Label prefHeight="23.0" prefWidth="110.0" text="%Delay" />
+                        <Label prefHeight="23.0" prefWidth="110.0" text="%Dictionary_Count" />
+                        <Label prefHeight="23.0" prefWidth="110.0" text="%State" />
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" layoutX="148.0" layoutY="36.0" prefHeight="190.0" prefWidth="110.0" spacing="20.0" AnchorPane.bottomAnchor="22.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="36.0">
+                     <children>
+                        <JFXTextField fx:id="field_threadCount" alignment="CENTER" prefHeight="23.0" prefWidth="110.0" text="50" />
+                        <JFXTextField fx:id="field_delay" alignment="CENTER" prefHeight="23.0" prefWidth="110.0" text="5000" />
+                        <JFXTextField fx:id="field_dicCount" alignment="CENTER" editable="false" prefHeight="23.0" prefWidth="110.0" />
+                        <JFXTextField fx:id="field_state" alignment="CENTER" editable="false" prefHeight="23.0" prefWidth="110.0" text="Wait" />
+                     </children>
+                  </VBox>
+                  <Label layoutY="5.0" prefHeight="24.0" prefWidth="226.0" text="%Run_SetupandInfo" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <JFXSpinner fx:id="spinner" layoutX="178.0" layoutY="182.0" progress="0.0" visible="false" />
+               </children>
+            </AnchorPane>
+            <JFXButton fx:id="BT_next" buttonType="RAISED" disable="true" layoutX="495.0" layoutY="443.0" onAction="#OnBT_next" prefHeight="44.0" prefWidth="83.0" ripplerFill="BLACK" />
+            <JFXButton fx:id="BT_start" buttonType="RAISED" layoutX="286.0" layoutY="443.0" onAction="#OnBT_start" prefHeight="44.0" prefWidth="110.0" style="-fx-background-color: #ffffff;" text="%Start" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="resultPane" prefHeight="200.0" prefWidth="200.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="85.0">
+         <children>
+            <JFXListView fx:id="view_result" layoutX="175.0" layoutY="14.0" prefHeight="410.0" prefWidth="465.0" AnchorPane.bottomAnchor="95.0" AnchorPane.leftAnchor="175.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="20.0" />
+            <JFXProgressBar fx:id="progressBar" cache="true" layoutX="175.0" layoutY="454.0" prefHeight="18.0" prefWidth="465.0" progress="0.0" />
+            <JFXButton fx:id="BT_back" buttonType="RAISED" layoutX="38.0" layoutY="441.0" onAction="#OnBT_back" prefHeight="45.0" prefWidth="100.0" ripplerFill="BLACK" />
+            <Label layoutX="27.0" layoutY="14.0" prefHeight="25.0" prefWidth="61.0" text="%Filter">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <JFXComboBox fx:id="CB_filter" layoutX="33.0" layoutY="39.0" prefHeight="23.0" prefWidth="110.0" />
+            <VBox alignment="CENTER" layoutX="38.0" layoutY="95.0" prefHeight="309.0" prefWidth="100.0" spacing="20.0">
+               <children>
+                  <JFXButton fx:id="LBT_ststusCodeFast" buttonType="RAISED" prefHeight="45.0" prefWidth="100.0" ripplerFill="BLACK" style="-fx-background-color: #ffffff;" text="%Directory_Help" />
+                  <JFXButton fx:id="LBT_save" buttonType="RAISED" prefHeight="45.0" prefWidth="100.0" ripplerFill="BLACK" style="-fx-background-color: #ffffff;" text="%Directory_Save" />
+                  <JFXButton fx:id="LBT_copy" buttonType="RAISED" prefHeight="45.0" prefWidth="100.0" ripplerFill="BLACK" style="-fx-background-color: #ffffff;" text="%Directory_Copy" />
+                  <JFXButton prefHeight="45.0" prefWidth="100.0" ripplerFill="BLACK" />
+                  <JFXButton prefHeight="45.0" prefWidth="100.0" ripplerFill="BLACK" />
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="./assets/img/ScaletBomb.png" width="80%">
+    <img src="./assets/img/ScaletBomb.png">
 </p>
 
 # ScaletBomb

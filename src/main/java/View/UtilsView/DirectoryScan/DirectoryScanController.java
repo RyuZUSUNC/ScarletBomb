@@ -1,6 +1,7 @@
 package View.UtilsView.DirectoryScan;
 
 import Init.Init;
+import View.UtilsView.PortScanView.PortFast;
 import com.jfoenix.controls.*;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -17,7 +18,6 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-import javax.swing.*;
 import javax.swing.filechooser.FileSystemView;
 import java.awt.*;
 import java.awt.datatransfer.Clipboard;
@@ -180,7 +180,7 @@ public class DirectoryScanController {
     }
 
     @FXML private void OnLBT_ststusCodeFast(){
-
+        new StstusCodeFast().start(new Stage());
     }
 
     @FXML private void OnLBT_copy(){

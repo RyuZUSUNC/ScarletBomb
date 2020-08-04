@@ -8,6 +8,6 @@ public class RootViewNodeList {
     public RootViewNodeList(){
         this.NodeList.add("/View/UtilsView/PortScanView/PortScan.fxml");
         this.NodeList.add("/View/UtilsView/DirectoryScan/DirectoryScan.fxml");
-        this.NodeList.add("/View/UtilsView/DNSScan/DNSScan.fxml");
+        // this.NodeList.add("/View/UtilsView/DNSScan/DNSScan.fxml");
     }
 }

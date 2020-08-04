@@ -11,10 +11,22 @@ import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
+import javafx.scene.control.Alert;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import javafx.util.Duration;
+
+import javax.swing.*;
+import javax.swing.filechooser.FileSystemView;
+import java.awt.*;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.StringSelection;
+import java.awt.datatransfer.Transferable;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
-import java.util.Objects;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
@@ -32,7 +44,8 @@ public class DirectoryScanController {
 
     @FXML AnchorPane settingPane;
     @FXML AnchorPane resultPane;
-    @FXML JFXComboBox CB_Protocol;
+    @FXML
+    JFXComboBox<String> CB_Protocol;
 
     @FXML JFXTextField field_target;
     @FXML JFXTextField field_dicPath;
@@ -62,15 +75,17 @@ public class DirectoryScanController {
     @FXML JFXButton BT_next;
     @FXML JFXButton BT_back;
 
-    @FXML JFXComboBox CB_filter;
+    @FXML
+    JFXComboBox<String> CB_filter;
 
     @FXML JFXButton LBT_save;
     @FXML JFXButton LBT_ststusCodeFast;
     @FXML JFXButton LBT_copy;
-    @FXML JFXButton LBT_04;
+    @FXML JFXButton LBT_order;
     @FXML JFXButton LBT_05;
 
-    @FXML JFXListView view_result;
+    @FXML
+    JFXListView<String> view_result;
 
     @FXML JFXProgressBar progressBar;
     @FXML JFXSpinner spinner;
@@ -81,6 +96,7 @@ public class DirectoryScanController {
         BT_back.setGraphic(directoryScanIcon.arrow_go_back);
         BT_next.setGraphic(directoryScanIcon.arrow_right);
         LBT_copy.setGraphic(directoryScanIcon.clipbord);
+        LBT_order.setGraphic(directoryScanIcon.sort_desc);
 
         view_result.setItems(ResultList);
 
@@ -93,11 +109,22 @@ public class DirectoryScanController {
     @FXML private void OnBT_start(){
         initOnBT_start();
         initCB_filter();
+        ResultList.clear();
         BT_next.setDisable(false);
         paneCheckAnime(resultPane,settingPane);
         field_state.setVisible(false);
         BT_start.setDisable(true);
         DirectoryScan();
+    }
+
+    private void initOnBT_start(){
+        progressBar.lookup(".bar").setStyle("-fx-background-color: #26a7e2;");
+        bean.setThreadCount(Integer.parseInt(field_threadCount.getText()));
+        bean.setDelay(Integer.parseInt(field_delay.getText()));
+        field_state.setVisible(false);
+        spinner.setVisible(true);
+        SCAN_CONTER = 0;
+        CB_filter.setDisable(true);
     }
 
     @FXML private void OnDirectory_select(){
@@ -115,6 +142,77 @@ public class DirectoryScanController {
         }
     }
 
+    @FXML private void OnBT_back(){
+        paneCheckAnime(settingPane,resultPane);
+    }
+
+    @FXML private void OnBT_next(){
+        paneCheckAnime(resultPane,settingPane);
+    }
+
+    @FXML private void OnLBT_save(){
+        FileChooser fileChooser = new FileChooser();
+        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("TXT files (*.txt)", "*.txt");
+        fileChooser.getExtensionFilters().add(extFilter);
+        Stage s = new Stage();
+        FileSystemView fsv = FileSystemView.getFileSystemView();
+        fileChooser.setInitialDirectory(fsv.getHomeDirectory());
+        fileChooser.setInitialFileName("Result");
+        File file = fileChooser.showSaveDialog(s);
+        if(file==null) {
+            return;
+        }else{
+            try {
+                OutputStreamWriter OSW = new OutputStreamWriter(new FileOutputStream(file), "utf-8");
+                for (String a:view_result.getItems()) {
+                    OSW.write(a.replace("     ","     "+PROTOCOL+bean.getTargetURL())+"\n");
+                    //System.out.println(a.substring(0,3));
+                }
+                OSW.flush();
+                OSW.close();
+                Desktop.getDesktop().open(file);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        // String exportFilePath = file.getAbsolutePath();
+        // System.out.println(exportFilePath);
+    }
+
+    @FXML private void OnLBT_ststusCodeFast(){
+
+    }
+
+    @FXML private void OnLBT_copy(){
+        StringBuilder result = new StringBuilder();
+        for (String a:view_result.getItems()) {
+            result.append(a).append("\n");
+        }
+
+        Clipboard clip = Toolkit.getDefaultToolkit().getSystemClipboard();
+        Transferable tText = new StringSelection(result.toString());
+        clip.setContents(tText, null);
+
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setGraphic(directoryScanIcon.clipbord_alert);
+        alert.setTitle(Init.languageResourceBundle.getString("Infomation"));
+        alert.setHeaderText(Init.languageResourceBundle.getString("Copy_Complete"));
+        alert.setContentText(Init.languageResourceBundle.getString("Copy_Complete_message"));
+        alert.showAndWait();
+    }
+
+    @FXML private void OnLBT_order(){
+        for (int i = 0; i < view_result.getItems().size()-1; i++) {
+            for (int j = 0; j < view_result.getItems().size()-1; j++) {
+                if(Integer.parseInt((view_result.getItems().get(j)).substring(0,3))>Integer.parseInt((view_result.getItems().get(j+1)).substring(0,3))){
+                    String Temp = view_result.getItems().get(j);
+                    view_result.getItems().set(j,view_result.getItems().get(j+1));
+                    view_result.getItems().set(j+1,Temp);
+                }
+            }
+        }
+    }
+// Field
     private void FieldsListener(){
         field_target.textProperty().addListener((observable, oldValue, newValue) -> Platform.runLater(() -> {
             if(!field_target.getText().isEmpty()&&!field_dicPath.getText().isEmpty()){
@@ -137,23 +235,6 @@ public class DirectoryScanController {
                 field_preview.setText(PROTOCOL + bean.getTargetURL()+bean.getDirectoryText().get(1));
             }
         }));
-    }
-
-    @FXML private void OnBT_back(){
-        paneCheckAnime(settingPane,resultPane);
-    }
-
-    @FXML private void OnBT_next(){
-        paneCheckAnime(resultPane,settingPane);
-    }
-
-    private void initOnBT_start(){
-        progressBar.lookup(".bar").setStyle("-fx-background-color: #26a7e2;");
-        bean.setThreadCount(Integer.parseInt(field_threadCount.getText()));
-        bean.setDelay(Integer.parseInt(field_delay.getText()));
-        field_state.setVisible(false);
-        spinner.setVisible(true);
-        SCAN_CONTER = 0;
     }
 // Anime
     private void paneCheckAnime(AnchorPane set,AnchorPane noset){
@@ -223,7 +304,25 @@ public class DirectoryScanController {
         CB_Protocol.setItems(Protocol);
         CB_Protocol.getSelectionModel().select(0);
     }
-//OnScan
+
+    @FXML private void SelectCB_filter(){
+        // System.out.println(CB_filter.getValue());
+
+        ObservableList<String> SelectedList = FXCollections.observableArrayList();
+
+        if(!CB_filter.getValue().equals("ALL")){
+            SelectedList.clear();
+            for (String a:ResultList) {
+                if(CB_filter.getValue().equals(a.substring(0,3))){
+                 SelectedList.add(a);
+                }
+            }
+            view_result.setItems(SelectedList);
+        }else {
+            view_result.setItems(ResultList);
+        }
+    }
+// OnScan
     private void DirectoryScan(){
         Executor exec = Executors.newFixedThreadPool(bean.getThreadCount(), runnable -> {
             Thread t = Executors.defaultThreadFactory().newThread(runnable);
@@ -237,12 +336,22 @@ public class DirectoryScanController {
                 @Override
                 public String call() {
                     // in real life, do real work here...
-                    ProgressSet();
-                    if(SCAN_CONTER>=bean.getDirectoryLineCountNum())
-                    {
-                        PortScanEnd();
+                    String Result = null;
+                    try{
+                        Result = DirectoryScanner(frequency);
+                        ProgressSet();
+                        if(SCAN_CONTER>=bean.getDirectoryLineCountNum())
+                        {
+                            DirectoryScanEnd();
+                        }
+                    }catch(Exception e){
+                        ProgressSet();
+                        if(SCAN_CONTER>=bean.getDirectoryLineCountNum())
+                        {
+                            DirectoryScanEnd();
+                        }
                     }
-                    return DirectoryScanner(frequency);
+                    return Result;
                 }
             };
             task.setOnSucceeded(e -> ResultSet(task.getValue()));
@@ -258,10 +367,12 @@ public class DirectoryScanController {
         }
     }
 
-    private void PortScanEnd(){
+    private void DirectoryScanEnd(){
         BT_start.setDisable(false);
         spinner.setVisible(false);
         field_state.setVisible(true);
+        progressBar.lookup(".bar").setStyle("-fx-background-color: #26e283;");
+        CB_filter.setDisable(false);
     }
 
     private void ProgressSet(){

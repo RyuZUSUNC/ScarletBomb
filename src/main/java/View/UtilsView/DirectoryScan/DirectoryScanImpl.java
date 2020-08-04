@@ -1,10 +1,12 @@
 package View.UtilsView.DirectoryScan;
 
+import javafx.scene.input.TouchPoint;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.methods.GetMethod;
 
+import javax.swing.filechooser.FileSystemView;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -14,6 +16,8 @@ public class DirectoryScanImpl {
         Stage primaryStage = null;
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle(Title);
+        FileSystemView fsv = FileSystemView.getFileSystemView();
+        fileChooser.setInitialDirectory(fsv.getHomeDirectory());
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("txt","*.txt"));
         return fileChooser.showOpenDialog(primaryStage);
     }//字典获取
@@ -53,7 +57,7 @@ public class DirectoryScanImpl {
         GetMethod getMethod = new GetMethod(url);
         getMethod.setFollowRedirects(false);//取消跟随300段跳转
         client.setTimeout(timeOut);
-        client.setConnectionTimeout(timeOut+5000);
+        client.setConnectionTimeout(timeOut+2000);
         //client.getHttpConnectionManager().getParams().setConnectionTimeout(5000);
         int code = 0;
         try {

@@ -71,10 +71,6 @@ public class RootViewController {
     private void getView() {
         if ((RootTree.getSelectionModel().getSelectedItem()).isLeaf()) {
 
-            for (Node a : allpane.getChildren()) {
-                a.setVisible(false);
-            }//隐藏所有pane
-
             String SelectNodeValue = (RootTree.getSelectionModel().getSelectedItem().toString().split(" "))[3];//获取tree选中节点value
             if (Locale.getDefault().getLanguage().equals("zh")) {
                 try {
@@ -87,6 +83,11 @@ public class RootViewController {
 
             for (Node a : allpane.getChildren()) {
                 if (a.getId().equals(SelectNodeValue)) {
+
+                    for (Node b : allpane.getChildren()) {
+                        b.setVisible(false);
+                    }//隐藏所有pane
+
                     a.setVisible(true);
                     // if(SelectNode!=a){
                     //     Pane_Anime(SelectNode,a);

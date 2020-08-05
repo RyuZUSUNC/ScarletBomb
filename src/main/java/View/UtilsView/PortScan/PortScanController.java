@@ -1,4 +1,4 @@
-package View.UtilsView.PortScanView;
+package View.UtilsView.PortScan;
 
 import Init.Init;
 import com.jfoenix.controls.JFXButton;

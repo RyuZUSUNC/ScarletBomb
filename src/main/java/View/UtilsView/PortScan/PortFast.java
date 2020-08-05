@@ -1,4 +1,4 @@
-package View.UtilsView.PortScanView;
+package View.UtilsView.PortScan;
 import javafx.application.Application;
 
 import javafx.scene.Group;

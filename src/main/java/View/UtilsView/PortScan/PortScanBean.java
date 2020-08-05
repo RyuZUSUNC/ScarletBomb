@@ -1,4 +1,4 @@
-package View.UtilsView.PortScanView;
+package View.UtilsView.PortScan;
 
 public class PortScanBean {
     private String target;

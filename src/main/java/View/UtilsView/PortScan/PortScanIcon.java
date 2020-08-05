@@ -1,4 +1,4 @@
-package View.UtilsView.PortScanView;
+package View.UtilsView.PortScan;
 
 import com.jfoenix.svg.SVGGlyph;
 

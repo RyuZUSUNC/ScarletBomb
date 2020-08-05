@@ -1,7 +1,6 @@
 package View.UtilsView.DirectoryScan;
 
 import Init.Init;
-import View.UtilsView.PortScanView.PortFast;
 import com.jfoenix.controls.*;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -217,7 +216,7 @@ public class DirectoryScanController {
         field_target.textProperty().addListener((observable, oldValue, newValue) -> Platform.runLater(() -> {
             if(!field_target.getText().isEmpty()&&!field_dicPath.getText().isEmpty()){
                 bean.setTargetURL(field_target.getText());
-                PROTOCOL = CB_Protocol.getValue().toString();
+                PROTOCOL = CB_Protocol.getValue();
                 field_preview.setText(PROTOCOL + bean.getTargetURL()+bean.getDirectoryText().get(1));
             }
         }));
@@ -231,7 +230,7 @@ public class DirectoryScanController {
         field_dicPath.textProperty().addListener((observable, oldValue, newValue) -> Platform.runLater(() -> {
             if(!field_target.getText().isEmpty()&&!field_dicPath.getText().isEmpty()){
                 bean.setTargetURL(field_target.getText());
-                PROTOCOL = CB_Protocol.getValue().toString();
+                PROTOCOL = CB_Protocol.getValue();
                 field_preview.setText(PROTOCOL + bean.getTargetURL()+bean.getDirectoryText().get(1));
             }
         }));

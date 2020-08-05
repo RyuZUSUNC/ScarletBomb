@@ -40,7 +40,7 @@
                   <JFXTextField fx:id="field_preview" alignment="CENTER" editable="false" prefHeight="23.0" prefWidth="490.0" promptText="%Preview" />
                </children>
             </VBox>
-            <AnchorPane layoutX="416.0" layoutY="174.0" prefHeight="250.0" prefWidth="157.0">
+            <AnchorPane layoutX="416.0" layoutY="174.0" prefHeight="250.0" prefWidth="157.0" AnchorPane.bottomAnchor="80.0" AnchorPane.rightAnchor="105.0">
                <children>
                   <Label prefHeight="24.0" prefWidth="142.0" text="%Ststus_Code">
                      <font>
@@ -76,7 +76,7 @@
                   </VBox>
                </children>
             </AnchorPane>
-            <AnchorPane layoutX="108.0" layoutY="174.0" prefHeight="271.0" prefWidth="272.0">
+            <AnchorPane layoutX="108.0" layoutY="174.0" prefHeight="271.0" prefWidth="272.0" AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="105.0">
                <children>
                   <VBox alignment="CENTER_LEFT" layoutX="14.0" layoutY="32.0" prefHeight="190.0" prefWidth="110.0" spacing="25.0" AnchorPane.bottomAnchor="26.0" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="32.0">
                      <children>
@@ -102,7 +102,7 @@
                   <JFXSpinner fx:id="spinner" layoutX="178.0" layoutY="187.0" progress="0.0" visible="false" />
                </children>
             </AnchorPane>
-            <JFXButton fx:id="BT_next" buttonType="RAISED" disable="true" layoutX="495.0" layoutY="443.0" onAction="#OnBT_next" prefHeight="44.0" prefWidth="83.0" ripplerFill="BLACK" />
+            <JFXButton fx:id="BT_next" buttonType="RAISED" disable="true" layoutX="495.0" layoutY="443.0" onAction="#OnBT_next" prefHeight="44.0" prefWidth="83.0" ripplerFill="BLACK" AnchorPane.bottomAnchor="38.0" AnchorPane.rightAnchor="102.0" />
             <JFXButton fx:id="BT_start" buttonType="RAISED" layoutX="286.0" layoutY="443.0" onAction="#OnBT_start" prefHeight="44.0" prefWidth="110.0" style="-fx-background-color: #ffffff;" text="%Start" />
          </children>
       </AnchorPane>

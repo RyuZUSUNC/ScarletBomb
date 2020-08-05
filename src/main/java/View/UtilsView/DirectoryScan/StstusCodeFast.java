@@ -275,7 +275,7 @@ public class StstusCodeFast extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        primaryStage.setTitle("PortFast");
+        primaryStage.setTitle("StstusCodeFast");
         primaryStage.setWidth(670);
         primaryStage.setHeight(800);
         primaryStage.setResizable(false);

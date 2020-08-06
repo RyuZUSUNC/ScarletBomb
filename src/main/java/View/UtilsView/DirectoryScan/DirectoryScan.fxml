@@ -102,13 +102,13 @@
                   <JFXSpinner fx:id="spinner" layoutX="178.0" layoutY="187.0" progress="0.0" visible="false" />
                </children>
             </AnchorPane>
-            <JFXButton fx:id="BT_next" buttonType="RAISED" disable="true" layoutX="495.0" layoutY="443.0" onAction="#OnBT_next" prefHeight="44.0" prefWidth="83.0" ripplerFill="BLACK" AnchorPane.bottomAnchor="38.0" AnchorPane.rightAnchor="102.0" />
-            <JFXButton fx:id="BT_start" buttonType="RAISED" layoutX="286.0" layoutY="443.0" onAction="#OnBT_start" prefHeight="44.0" prefWidth="110.0" style="-fx-background-color: #ffffff;" text="%Start" />
+            <JFXButton fx:id="BT_next" buttonType="RAISED" layoutX="497.0" layoutY="443.0" onAction="#OnBT_next" prefHeight="44.0" prefWidth="83.0" ripplerFill="BLACK" />
+            <JFXButton fx:id="BT_start" buttonType="RAISED" layoutX="285.0" layoutY="443.0" onAction="#OnBT_start" prefHeight="44.0" prefWidth="110.0" style="-fx-background-color: #ffffff;" text="%Start" />
          </children>
       </AnchorPane>
       <AnchorPane fx:id="resultPane" prefHeight="200.0" prefWidth="200.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="85.0">
          <children>
-            <JFXListView fx:id="view_result" layoutX="175.0" layoutY="14.0" prefHeight="410.0" prefWidth="465.0" AnchorPane.bottomAnchor="95.0" AnchorPane.leftAnchor="175.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="20.0" />
+            <JFXListView fx:id="view_result" layoutX="175.0" layoutY="14.0" prefHeight="415.0" prefWidth="465.0" />
             <JFXProgressBar fx:id="progressBar" cache="true" layoutX="175.0" layoutY="454.0" prefHeight="18.0" prefWidth="465.0" progress="0.0" />
             <JFXButton fx:id="BT_back" buttonType="RAISED" layoutX="38.0" layoutY="441.0" onAction="#OnBT_back" prefHeight="45.0" prefWidth="100.0" ripplerFill="BLACK" />
             <Label layoutX="27.0" layoutY="14.0" prefHeight="25.0" prefWidth="61.0" text="%Filter">

@@ -83,7 +83,7 @@ public class StstusCodeFast extends Application {
             "\n" +
             "<h2>302 Found</h2>\n" +
             "\n" +
-            "<blockquote><p>请求的资源现在临时从不同的 URI 响应请求。由于这样的重定向是临时的，客户端应当继续向原有地址发送以后的请求。只有在Cache-Control或Expires中进行了指定的情况下，这个响应才是可缓存的。&gt;</p></blockquote>\n" +
+            "<blockquote><p>请求的资源现在临时从不同的 URI 响应请求。由于这样的重定向是临时的，客户端应当继续向原有地址发送以后的请求。只有在Cache-Control或Expires中进行了指定的情况下，这个响应才是可缓存的。</p></blockquote>\n" +
             "\n" +
             "<h2>303 See Other</h2>\n" +
             "\n" +

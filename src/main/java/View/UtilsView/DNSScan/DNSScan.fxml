@@ -2,9 +2,10 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXListView?>
+<?import com.jfoenix.controls.JFXProgressBar?>
 <?import com.jfoenix.controls.JFXSpinner?>
 <?import com.jfoenix.controls.JFXTextField?>
-<?import com.jfoenix.controls.JFXTreeView?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
@@ -18,23 +19,23 @@
             <Font name="Jokerman" size="45.0" />
          </font>
       </Label>
-      <AnchorPane layoutX="105.0" layoutY="220.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="85.0">
+      <AnchorPane fx:id="settingPane" layoutX="105.0" layoutY="220.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="85.0">
          <children>
             <VBox layoutX="95.0" layoutY="24.0" prefHeight="120.0" prefWidth="490.0" spacing="20.0" AnchorPane.leftAnchor="88.0">
                <children>
                   <HBox prefHeight="25.0" prefWidth="465.0" spacing="5.0">
                      <children>
-                        <JFXComboBox prefHeight="23.0" prefWidth="90.0" />
-                        <JFXTextField alignment="CENTER" prefHeight="23.0" prefWidth="395.0" promptText="%Target" />
+                        <JFXComboBox fx:id="CB_Protocol" prefHeight="23.0" prefWidth="90.0" />
+                        <JFXTextField fx:id="field_target" alignment="CENTER" prefHeight="23.0" prefWidth="395.0" promptText="%Target" />
                      </children>
                   </HBox>
                   <HBox prefHeight="25.0" prefWidth="370.0" spacing="5.0">
                      <children>
-                        <JFXButton buttonType="RAISED" onAction="#OnDirectory_select" prefHeight="23.0" prefWidth="90.0" style="-fx-background-color: #ffffff;" text="%Dictionary" />
-                        <JFXTextField alignment="CENTER" editable="false" prefHeight="23.0" prefWidth="395.0" promptText="%Dictionary_Path" />
+                        <JFXButton fx:id="BT_selectDic" buttonType="RAISED" prefHeight="23.0" prefWidth="90.0" style="-fx-background-color: #ffffff;" text="%Dictionary" />
+                        <JFXTextField fx:id="field_dicPath" alignment="CENTER" editable="false" prefHeight="23.0" prefWidth="395.0" promptText="%Dictionary_Path" />
                      </children>
                   </HBox>
-                  <JFXTextField alignment="CENTER" editable="false" prefHeight="23.0" prefWidth="490.0" promptText="%Preview" />
+                  <JFXTextField fx:id="field_preview" alignment="CENTER" editable="false" prefHeight="23.0" prefWidth="490.0" promptText="%Preview" />
                </children>
             </VBox>
             <AnchorPane layoutX="115.0" layoutY="167.0" prefHeight="271.0" prefWidth="272.0" AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="105.0">
@@ -49,10 +50,10 @@
                   </VBox>
                   <VBox alignment="CENTER" layoutX="148.0" layoutY="32.0" prefHeight="190.0" prefWidth="110.0" spacing="25.0" AnchorPane.bottomAnchor="26.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="32.0">
                      <children>
-                        <JFXTextField alignment="CENTER" prefHeight="23.0" prefWidth="110.0" text="50" />
-                        <JFXTextField alignment="CENTER" prefHeight="23.0" prefWidth="110.0" text="2000" />
-                        <JFXTextField alignment="CENTER" editable="false" prefHeight="23.0" prefWidth="110.0" />
-                        <JFXTextField alignment="CENTER" editable="false" prefHeight="23.0" prefWidth="110.0" text="Wait" />
+                        <JFXTextField fx:id="field_threadCount" alignment="CENTER" prefHeight="23.0" prefWidth="110.0" text="50" />
+                        <JFXTextField fx:id="field_delay" alignment="CENTER" prefHeight="23.0" prefWidth="110.0" text="2000" />
+                        <JFXTextField fx:id="field_dicCount" alignment="CENTER" editable="false" prefHeight="23.0" prefWidth="110.0" />
+                        <JFXTextField fx:id="field_state" alignment="CENTER" editable="false" prefHeight="23.0" prefWidth="110.0" text="Wait" />
                      </children>
                   </VBox>
                   <Label layoutY="5.0" prefHeight="24.0" prefWidth="226.0" text="%Run_SetupandInfo" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -60,21 +61,43 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <JFXSpinner layoutX="178.0" layoutY="187.0" progress="0.0" visible="false" />
+                  <JFXSpinner fx:id="spinner" layoutX="178.0" layoutY="187.0" progress="0.0" visible="false" />
                </children>
             </AnchorPane>
-            <AnchorPane layoutX="422.0" layoutY="200.0" prefHeight="271.0" prefWidth="200.0" AnchorPane.bottomAnchor="80.0" AnchorPane.rightAnchor="105.0">
+            <AnchorPane layoutX="422.0" layoutY="200.0" prefHeight="271.0" prefWidth="185.0" AnchorPane.bottomAnchor="80.0" AnchorPane.rightAnchor="105.0">
                <children>
-                  <Label layoutX="8.0" layoutY="14.0" prefHeight="24.0" prefWidth="200.0" text="%Dictionary_Preview" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <Label layoutX="8.0" layoutY="14.0" prefHeight="24.0" prefWidth="185.0" text="%Dictionary_Preview" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <JFXTreeView layoutX="34.0" layoutY="42.0" prefHeight="204.0" prefWidth="132.0" />
+                  <JFXListView layoutX="32.0" layoutY="44.0" prefHeight="200.0" prefWidth="136.0" />
                </children>
             </AnchorPane>
-            <JFXButton buttonType="RAISED" layoutX="285.0" layoutY="443.0" prefHeight="44.0" prefWidth="110.0" style="-fx-background-color: #ffffff;" />
-            <JFXButton buttonType="RAISED" disable="true" layoutX="506.0" layoutY="439.0" onAction="#OnBT_next" prefHeight="44.0" prefWidth="83.0" ripplerFill="BLACK" AnchorPane.bottomAnchor="38.0" AnchorPane.rightAnchor="102.0" />
+            <JFXButton fx:id="BT_start" buttonType="RAISED" layoutX="285.0" layoutY="443.0" onAction="#OnBT_start" prefHeight="44.0" prefWidth="110.0" style="-fx-background-color: #ffffff;" text="%Start" />
+            <JFXButton fx:id="BT_next" buttonType="RAISED" layoutX="495.0" layoutY="443.0" onAction="#OnBT_next" prefHeight="44.0" prefWidth="83.0" ripplerFill="BLACK" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="resultPane" layoutX="14.0" layoutY="105.0" prefHeight="200.0" prefWidth="200.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="85.0">
+         <children>
+            <JFXListView fx:id="view_result" layoutX="175.0" layoutY="14.0" prefHeight="415.0" prefWidth="465.0" />
+            <JFXProgressBar fx:id="progressBar" cache="true" layoutX="175.0" layoutY="454.0" prefHeight="18.0" prefWidth="465.0" progress="0.0" />
+            <JFXButton fx:id="BT_back" buttonType="RAISED" layoutX="38.0" layoutY="441.0" onAction="#OnBT_back" prefHeight="45.0" prefWidth="100.0" ripplerFill="BLACK" />
+            <Label layoutX="27.0" layoutY="14.0" prefHeight="25.0" prefWidth="61.0" text="%Filter">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <JFXComboBox fx:id="CB_filter" layoutX="33.0" layoutY="39.0" prefHeight="23.0" prefWidth="110.0" />
+            <VBox alignment="CENTER" layoutX="38.0" layoutY="95.0" prefHeight="309.0" prefWidth="100.0" spacing="20.0">
+               <children>
+                  <JFXButton fx:id="LBT_save" buttonType="RAISED" prefHeight="45.0" prefWidth="100.0" ripplerFill="BLACK" style="-fx-background-color: #ffffff;" text="%Directory_Save" />
+                  <JFXButton fx:id="LBT_copy" buttonType="RAISED" prefHeight="45.0" prefWidth="100.0" ripplerFill="BLACK" style="-fx-background-color: #ffffff;" text="%Directory_Copy" />
+                  <JFXButton fx:id="LBT_order" buttonType="RAISED" prefHeight="45.0" prefWidth="100.0" ripplerFill="BLACK" style="-fx-background-color: #ffffff;" text="%Directory_Order" />
+                  <JFXButton prefHeight="45.0" prefWidth="100.0" ripplerFill="BLACK" />
+                  <JFXButton prefHeight="45.0" prefWidth="100.0" ripplerFill="BLACK" />
+               </children>
+            </VBox>
          </children>
       </AnchorPane>
    </children>

@@ -43,8 +43,7 @@ public class DirectoryScanController {
 
     @FXML AnchorPane settingPane;
     @FXML AnchorPane resultPane;
-    @FXML
-    JFXComboBox<String> CB_Protocol;
+    @FXML JFXComboBox<String> CB_Protocol;
 
     @FXML JFXTextField field_target;
     @FXML JFXTextField field_dicPath;
@@ -74,8 +73,7 @@ public class DirectoryScanController {
     @FXML JFXButton BT_next;
     @FXML JFXButton BT_back;
 
-    @FXML
-    JFXComboBox<String> CB_filter;
+    @FXML JFXComboBox<String> CB_filter;
 
     @FXML JFXButton LBT_save;
     @FXML JFXButton LBT_ststusCodeFast;
@@ -109,9 +107,7 @@ public class DirectoryScanController {
         initOnBT_start();
         initCB_filter();
         ResultList.clear();
-        BT_next.setDisable(false);
         paneCheckAnime(resultPane,settingPane);
-        field_state.setVisible(false);
         BT_start.setDisable(true);
         DirectoryScan();
     }
@@ -309,11 +305,19 @@ public class DirectoryScanController {
 
         ObservableList<String> SelectedList = FXCollections.observableArrayList();
 
-        if(!CB_filter.getValue().equals("ALL")){
+        if(!CB_filter.getValue().equals("ALL")&&!CB_filter.getValue().contains("X")){
             SelectedList.clear();
             for (String a:ResultList) {
                 if(CB_filter.getValue().equals(a.substring(0,3))){
                  SelectedList.add(a);
+                }
+            }
+            view_result.setItems(SelectedList);
+        }else if (!CB_filter.getValue().equals("ALL")&&CB_filter.getValue().contains("X")){
+            SelectedList.clear();
+            for (String a:ResultList) {
+                if(CB_filter.getValue().replace("X","").equals(a.substring(0,1))){
+                    SelectedList.add(a);
                 }
             }
             view_result.setItems(SelectedList);
